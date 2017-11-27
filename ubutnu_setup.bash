@@ -26,10 +26,13 @@ echo -e "${YEL}Starting to install apps ${NC}"
 # vlc
 sudo apt-get -y install vlc
 
+# jabref
+sudo apt-get -y install jabref
+
 # texstudio
-# sudo apt-add-repository ppa:blahota/texstudio
-# sudo apt-get -y update
-# sudo apt-get -y install texstudio
+sudo apt-add-repository ppa:blahota/texstudio
+sudo apt-get -y update
+sudo apt-get -y install texstudio
 
 # git
 sudo apt-get -y purge runit
@@ -55,6 +58,38 @@ sudo apt-get -y install gparted
 
 # pip
 sudo apt-get -y install python-pip python3-pip
+
+# powerline
+pip install --user powerline-status
+
+# powerline fonts
+wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+
+mv PowerlineSymbols.otf ~/.local/share/fonts/
+fc-cache -vf ~/.local/share/fonts/
+mkdir -p ~/.config/fontconfig/conf.d/
+mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+
+# install curl
+sudo apt-get -y install curl
+
+# install oh-my-zsh
+sudo apt-get -y install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo ""
+echo -e "${YEL}Change ZSH_THEME="robbyrussell" to ZSH_THEME="agnoster" ${NC}"
+echo -e "${YEL}Then ctrl+O > enter > ctrl+x ${NC}"
+gedit ~/.zshrc
+echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
+
+# open tmux by default
+echo '[[ $TERM != "screen" ]] && exec tmux' >> ~/.zshrc
+
+# uniform-icons theme
+# sudo add-apt-repository ppa:noobslab/icons2
+# sudo apt-get update
+# sudo apt-get install uniform-icons
 
 # other apps to be installed manually
 echo ""
