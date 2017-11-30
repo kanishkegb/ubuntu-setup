@@ -53,6 +53,9 @@ sudo apt-get -y install my-weather-indicator
 # red-shift
 sudo apt-get -y install redshift-gtk
 
+# invert color space
+sudo apt-get -y install xcalib
+
 # g-parted
 sudo apt-get -y install gparted
 
@@ -98,3 +101,9 @@ echo -e "${YEL}Install these apps manually ${NC}"
 echo "atom: https://atom.io/download/deb"
 echo "gitkraken: https://www.gitkraken.com/download"
 echo "anaconda: https://www.continuum.io/downloads"
+
+# manual settings
+echo ""
+echo ""
+echo -e "${YEL}Change these settings manually${NC}"
+echo "Add shortcut Super+Ctrl+C for xcalib -invert -alter"
