@@ -87,7 +87,10 @@ gedit ~/.zshrc
 echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
 
 # open tmux by default
-echo '[[ $TERM != "screen" ]] && exec tmux' >> ~/.zshrc
+# echo '[[ $TERM != "screen" ]] && exec tmux' >> ~/.zshrc
+
+# install tmux addons
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # uniform-icons theme
 # sudo add-apt-repository ppa:noobslab/icons2
