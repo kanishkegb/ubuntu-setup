@@ -92,6 +92,9 @@ echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
 # install tmux addons
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+# install Sinhala
+sudo apt-get install ibus-m17n
+
 # uniform-icons theme
 # sudo add-apt-repository ppa:noobslab/icons2
 # sudo apt-get update
@@ -111,3 +114,4 @@ echo ""
 echo -e "${YEL}Change these settings manually${NC}"
 echo "Add shortcut Super+Ctrl+C for xcalib -invert -alter"
 echo "Add solarized_light to ~/.config/texstudio/texstudio.ini"
+echo "Add the Sinhala keyboard in Language Settings"
