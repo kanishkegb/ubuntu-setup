@@ -24,17 +24,25 @@ echo ""
 echo -e "${YEL}Starting to install apps ${NC}"
 
 # vlc
+echo ""
+echo -e "${YEL}Installing VLC ${NC}"
 sudo apt-get -y install vlc
 
 # jabref
+echo ""
+echo -e "${YEL}Installing JabRef ${NC}"
 sudo apt-get -y install jabref
 
 # texstudio
+echo ""
+echo -e "${YEL}Installing TexStudio ${NC}"
 sudo apt-add-repository ppa:blahota/texstudio
 sudo apt-get -y update
 sudo apt-get -y install texstudio
 
 # git
+echo ""
+echo -e "${YEL}Installing git ${NC}"
 sudo apt-get -y purge runit
 sudo apt-get -y purge git-all
 sudo apt-get -y purge git
@@ -43,29 +51,43 @@ sudo apt -y update
 sudo apt -y install git
 
 # tmux
+echo ""
+echo -e "${YEL}Installing tmux ${NC}"
 sudo apt-get -y install tmux
 
 # weather widget
+echo ""
+echo -e "${YEL}Installing Weather Widget ${NC}"
 sudo add-apt-repository ppa:atareao/atareao
 sudo apt-get update
 sudo apt-get -y install my-weather-indicator
 
 # red-shift
-sudo apt-get -y install redshift-gtk
+# sudo apt-get -y install redshift-gtk
 
 # invert color space
+echo ""
+echo -e "${YEL}Installing xcalib ${NC}"
 sudo apt-get -y install xcalib
 
 # g-parted
+echo ""
+echo -e "${YEL}Installing gparted ${NC}"
 sudo apt-get -y install gparted
 
 # pip
+echo ""
+echo -e "${YEL}Installing pip ${NC}"
 sudo apt-get -y install python-pip python3-pip
 
 # powerline
+echo ""
+echo -e "${YEL}Installing powerline ${NC}"
 pip install --user powerline-status
 
 # powerline fonts
+echo ""
+echo -e "${YEL}Installing powrline fonts ${NC}"
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
 
@@ -75,9 +97,13 @@ mkdir -p ~/.config/fontconfig/conf.d/
 mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 
 # install curl
+echo ""
+echo -e "${YEL}Installing curl ${NC}"
 sudo apt-get -y install curl
 
 # install oh-my-zsh
+echo ""
+echo -e "${YEL}Installing zsh ${NC}"
 sudo apt-get -y install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 echo ""
@@ -90,9 +116,13 @@ echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
 # echo '[[ $TERM != "screen" ]] && exec tmux' >> ~/.zshrc
 
 # install tmux addons
+echo ""
+echo -e "${YEL}Installing tmux addons ${NC}"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # install Sinhala
+echo ""
+echo -e "${YEL}Installing Sinhala ${NC}"
 sudo apt-get install ibus-m17n
 
 # uniform-icons theme
