@@ -123,7 +123,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # install Sinhala
 echo ""
 echo -e "${YEL}Installing Sinhala ${NC}"
-sudo apt-get install ibus-m17n
+sudo apt-get -y install ibus-m17n
 
 # uniform-icons theme
 # sudo add-apt-repository ppa:noobslab/icons2
