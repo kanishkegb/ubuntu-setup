@@ -87,6 +87,22 @@ echo -e "${YEL}Installing powerline ${NC}"
 pip install --user powerline-status
 cd powerline-shell
 sudo python setup.py install
+echo "function powerline_precmd() {" >> ~/.zshrc
+echo "    PS1="$(powerline-shell --shell zsh $?)"" >> ~/.zshrc
+echo "}" >> ~/.zshrc
+echo "" >> ~/.zshrc
+echo "function install_powerline_precmd() {" >> ~/.zshrc
+echo "  for s in "${precmd_functions[@]}"; do" >> ~/.zshrc
+echo "    if [ "$s" = "powerline_precmd" ]; then" >> ~/.zshrc
+echo "      return" >> ~/.zshrc
+echo "    fi" >> ~/.zshrc
+echo "  done" >> ~/.zshrc
+echo "  precmd_functions+=(powerline_precmd)" >> ~/.zshrc
+echo "}" >> ~/.zshrc
+echo "" >> ~/.zshrc
+echo "if [ "$TERM" != "linux" ]; then" >> ~/.zshrc
+echo "    install_powerline_precmd" >> ~/.zshrc
+echo "fi" >> ~/.zshrc
 
 # powerline fonts
 echo ""
@@ -114,9 +130,6 @@ echo -e "${YEL}Change ZSH_THEME="robbyrussell" to ZSH_THEME="agnoster" ${NC}"
 echo -e "${YEL}Then ctrl+O > enter > ctrl+x ${NC}"
 gedit ~/.zshrc
 echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
-
-# open tmux by default
-# echo '[[ $TERM != "screen" ]] && exec tmux' >> ~/.zshrc
 
 # install tmux addons
 echo ""
