@@ -54,6 +54,7 @@ sudo apt -y install git
 echo ""
 echo -e "${YEL}Installing tmux ${NC}"
 sudo apt-get -y install tmux
+cp .tmux.conf ~/
 
 # weather widget
 echo ""
@@ -84,6 +85,8 @@ sudo apt-get -y install python-pip python3-pip
 echo ""
 echo -e "${YEL}Installing powerline ${NC}"
 pip install --user powerline-status
+cd powerline-shell
+sudo python setup.py install
 
 # powerline fonts
 echo ""
@@ -94,7 +97,7 @@ wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbol
 mv PowerlineSymbols.otf ~/.local/share/fonts/
 fc-cache -vf ~/.local/share/fonts/
 mkdir -p ~/.config/fontconfig/conf.d/
-mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+mv -powerline-symbols.conf ~/.config/fontconfig/conf.d/
 
 # install curl
 echo ""
