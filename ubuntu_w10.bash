@@ -23,23 +23,6 @@ echo ""
 echo ""
 echo -e "${YEL}Starting to install apps ${NC}"
 
-# vlc
-echo ""
-echo -e "${YEL}Installing VLC ${NC}"
-sudo apt-get -y install vlc
-
-# jabref
-echo ""
-echo -e "${YEL}Installing JabRef ${NC}"
-sudo apt-get -y install jabref
-
-# texstudio
-echo ""
-echo -e "${YEL}Installing TexStudio ${NC}"
-sudo apt-add-repository ppa:blahota/texstudio
-sudo apt-get -y update
-sudo apt-get -y install texstudio
-
 # git
 echo ""
 echo -e "${YEL}Installing git ${NC}"
@@ -55,22 +38,7 @@ echo ""
 echo -e "${YEL}Installing tmux ${NC}"
 sudo apt-get -y install tmux
 
-# weather widget
-echo ""
-echo -e "${YEL}Installing Weather Widget ${NC}"
-sudo add-apt-repository ppa:atareao/atareao
-sudo apt-get update
-sudo apt-get -y install my-weather-indicator
-
-# red-shift
-# sudo apt-get -y install redshift-gtk
-
-# invert color space
-echo ""
-echo -e "${YEL}Installing xcalib ${NC}"
-sudo apt-get -y install xcalib
-
-# g-parted
+g-parted
 echo ""
 echo -e "${YEL}Installing gparted ${NC}"
 sudo apt-get -y install gparted
@@ -111,9 +79,6 @@ echo -e "${YEL}Change ZSH_THEME="robbyrussell" to ZSH_THEME="agnoster" ${NC}"
 echo -e "${YEL}Then ctrl+O > enter > ctrl+x ${NC}"
 gedit ~/.zshrc
 echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
-
-# open tmux by default
-# echo '[[ $TERM != "screen" ]] && exec tmux' >> ~/.zshrc
 
 # install tmux addons
 echo ""
