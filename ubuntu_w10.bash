@@ -34,7 +34,7 @@ sudo apt -y update
 sudo apt -y install git
 
 # update git submodules
-git submodule update
+git submodule update --init
 
 # tmux
 echo ""
