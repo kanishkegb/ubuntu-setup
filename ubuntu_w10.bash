@@ -33,6 +33,9 @@ sudo apt-get -y autoremove
 sudo apt -y update
 sudo apt -y install git
 
+# update git submodules
+git submodule update
+
 # tmux
 echo ""
 echo -e "${YEL}Installing tmux ${NC}"
