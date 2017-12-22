@@ -6,18 +6,19 @@ Simply follow these steps:
 - Download the bash file
 - Open a new terminal
 - cd to the download directory
-- run bash file: 
+- run bash file:
   ```
   . ubuntu_setup.bash
   ```
 
 ## Ubuntu Bash on Windows
-Install powerline fonts on Windows
+Clone ubuntu_setup on Windows. Do followings in PowerShell.
   ```shell
-  git clone https://github.com/powerline/fonts.git  
+  git clone https://github.com/kanishkegb/ubuntu-setup.git
+  cd ubuntu-setup
+  git submodule update --init
   cd fonts  
-  ./install.ps1
-  cd ..;rm -r -for ./fonts 
+  .\install.sh
   ```
 
 ## Virtual Machine
