@@ -20,6 +20,11 @@ Clone ubuntu_setup on Windows. Do followings in PowerShell.
   cd fonts  
   .\install.sh
   ```
+For execution policy issues, run below as Admin
+```shell
+powershell -ExecutionPolicy ByPass -File .\install.sh
+```
+
 
 ## Virtual Machine
 ### Setup Shared Folder - [link](https://help.ubuntu.com/community/VirtualBox/SharedFolders)
