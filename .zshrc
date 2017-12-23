@@ -92,7 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias wd="cd C:/Users/"
+alias wd="cd ~/../../mnt/c/Users/Kanishke/Documents/"
 
 function powerline_precmd() {
     PS1="$(powerline-shell --shell zsh $?)"
