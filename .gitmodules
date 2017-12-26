@@ -3,4 +3,4 @@
 	url = https://github.com/kanishkegb/powerline-shell.git
 [submodule "fonts"]
 	path = fonts
-	url = git@github.com:kanishkegb/fonts.git
+	url = https://github.com/kanishkegb/fonts.git
