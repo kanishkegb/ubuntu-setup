@@ -80,8 +80,6 @@ echo -e "${YEL}Installing zsh ${NC}"
 sudo apt-get -y install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-echo "cp .bashrc ~/"
-echo "cp .zshrc ~/"
 
 # install tmux addons
 echo ""
@@ -92,6 +90,15 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo ""
 echo -e "${YEL}Installing Sinhala ${NC}"
 sudo apt-get -y install ibus-m17n
+
+
+# copying dotfiles
+echo ""
+echo -e "${YEL}Copying dotfiles ${NC}"
+echo "cp .bashrc ~/"
+echo "cp .zshrc ~/"
+echo "cp .tmux.conf ~/"
+echo "cp .powerline-shell.json ~/"
 
 # uniform-icons theme
 # sudo add-apt-repository ppa:noobslab/icons2

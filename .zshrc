@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/kani/.oh-my-zsh
+  export ZSH=/home/kanishke/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -111,4 +111,4 @@ if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
 
-DEFAULT_USER = kani prompt_context(){}
+DEFAULT_USER = kanishke prompt_context(){}
