@@ -112,3 +112,5 @@ if [ "$TERM" != "linux" ]; then
 fi
 
 DEFAULT_USER = kanishke prompt_context(){}
+
+export PATH="/home/kanishke/anaconda3/bin:$PATH"  

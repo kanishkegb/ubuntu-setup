@@ -101,6 +101,7 @@ mv PowerlineSymbols.otf ~/.local/share/fonts/
 fc-cache -vf ~/.local/share/fonts/
 mkdir -p ~/.config/fontconfig/conf.d/
 mv -powerline-symbols.conf ~/.config/fontconfig/conf.d/
+cd ..
 
 # install curl
 echo ""
