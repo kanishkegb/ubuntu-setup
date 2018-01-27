@@ -110,7 +110,3 @@ function install_powerline_precmd() {
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
-
-DEFAULT_USER = kanishke prompt_context(){}
-
-export PATH="/home/kanishke/anaconda3/bin:$PATH"  

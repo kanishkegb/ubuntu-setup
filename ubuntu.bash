@@ -34,11 +34,11 @@ echo -e "${YEL}Installing JabRef ${NC}"
 sudo apt-get -y install jabref
 
 # texstudio
-echo ""
-echo -e "${YEL}Installing TexStudio ${NC}"
-sudo apt-add-repository ppa:blahota/texstudio
-sudo apt-get -y update
-sudo apt-get -y install texstudio
+# echo ""
+# echo -e "${YEL}Installing TexStudio ${NC}"
+# sudo apt-add-repository ppa:blahota/texstudio
+# sudo apt-get -y update
+# sudo apt-get -y install texstudio
 
 # git
 echo ""
