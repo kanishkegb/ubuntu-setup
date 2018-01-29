@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 reset
 echo -e "${YEL}Starting to change settings ${NC}"
 echo "change enabled=0"
-sudo gedit /etc/default/apport
+sudo nano /etc/default/apport
 
 
 ## system update
@@ -32,6 +32,11 @@ sudo apt-get -y purge git
 sudo apt-get -y autoremove
 sudo apt -y update
 sudo apt -y install git
+
+echo ""
+echo -e "${YEL}Setting up git params ${NC}"
+git config --global user.email "kanishkegb@gmail.com"
+git config --global push.default matching
 
 # update git submodules
 git submodule update --init
