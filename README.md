@@ -18,12 +18,8 @@ Clone ubuntu_setup on Windows. Do followings in PowerShell.
   cd ubuntu-setup
   git submodule update --init
   cd fonts  
-  .\install.sh
+  powershell -ExecutionPolicy ByPass -File .\install.ps1
   ```
-For execution policy issues, run below as Admin
-```shell
-powershell -ExecutionPolicy ByPass -File .\install.sh
-```
 
 
 ## Virtual Machine
