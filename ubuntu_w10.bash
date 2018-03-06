@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 reset
 echo -e "${YEL}Starting to change settings ${NC}"
 echo "change enabled=0"
-sudo nano /etc/default/apport
+sudo vi /etc/default/apport
 
 
 ## system update
@@ -24,14 +24,14 @@ echo ""
 echo -e "${YEL}Starting to install apps ${NC}"
 
 # git
-echo ""
-echo -e "${YEL}Installing git ${NC}"
-sudo apt-get -y purge runit
-sudo apt-get -y purge git-all
-sudo apt-get -y purge git
-sudo apt-get -y autoremove
-sudo apt -y update
-sudo apt -y install git
+#echo ""
+#echo -e "${YEL}Installing git ${NC}"
+#sudo apt-get -y purge runit
+#sudo apt-get -y purge git-all
+#sudo apt-get -y purge git
+#sudo apt-get -y autoremove
+#sudo apt -y update
+#sudo apt -y install git
 
 echo ""
 echo -e "${YEL}Setting up git params ${NC}"
@@ -46,10 +46,10 @@ echo ""
 echo -e "${YEL}Installing tmux ${NC}"
 sudo apt-get -y install tmux
 
-g-parted
-echo ""
-echo -e "${YEL}Installing gparted ${NC}"
-sudo apt-get -y install gparted
+# g-parted
+#echo ""
+#echo -e "${YEL}Installing gparted ${NC}"
+#sudo apt-get -y install gparted
 
 # pip
 echo ""
@@ -69,10 +69,13 @@ echo -e "${YEL}Installing powrline fonts ${NC}"
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
 
+mkdir -p ~/.local/share/fonts
+sudo apt -y install fontconfig
 mv PowerlineSymbols.otf ~/.local/share/fonts/
 fc-cache -vf ~/.local/share/fonts/
 mkdir -p ~/.config/fontconfig/conf.d/
 mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+cd ..
 
 # install curl
 echo ""
@@ -90,19 +93,20 @@ echo ""
 echo -e "${YEL}Installing tmux addons ${NC}"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+
 # install Sinhala
-echo ""
-echo -e "${YEL}Installing Sinhala ${NC}"
-sudo apt-get -y install ibus-m17n
+#echo ""
+#echo -e "${YEL}Installing Sinhala ${NC}"
+#sudo apt-get -y install ibus-m17n
 
 
 # copying dotfiles
 echo ""
 echo -e "${YEL}Copying dotfiles ${NC}"
-echo "cp .bashrc ~/"
-echo "cp .zshrc ~/"
-echo "cp .tmux.conf ~/"
-echo "cp .powerline-shell.json ~/"
+cp .bashrc ~/
+cp .zshrc ~/
+cp .tmux.conf ~/
+cp .powerline-shell.json ~/
 
 echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
 
