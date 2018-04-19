@@ -18,13 +18,27 @@ Clone ubuntu_setup on Windows. Do followings in PowerShell.
   cd ubuntu-setup
   git submodule update --init
   cd fonts  
-  .\install.sh
+  powershell -ExecutionPolicy ByPass -File .\install.ps1
   ```
-For execution policy issues, run below as Admin
-```shell
-powershell -ExecutionPolicy ByPass -File .\install.sh
-```
 
+## Vim 
+* First install Vim
+  ```
+  sudo apt-get install vim
+  ```
+* Plugin Manager
+  ```
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  ```
+* Install plugins
+  ```
+  vim
+  :source ~/.vimrc 
+  :PlugInstall 
+  ```
+  It might be required to press `q` at the end of the installation process.
+  
 
 ## Virtual Machine
 ### Setup Shared Folder - [link](https://help.ubuntu.com/community/VirtualBox/SharedFolders)
