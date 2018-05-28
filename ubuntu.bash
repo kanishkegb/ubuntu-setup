@@ -49,11 +49,7 @@ sudo apt-get -y purge git
 sudo apt-get -y autoremove
 sudo apt -y update
 sudo apt -y install git
-                                                                                                │ishke-XPS"
-echo ""                                                                                         │ 13:11:32  powerline-shell  ⚓ v0.4.1-18-g7f837ed  ✎  %  gcam "added PowerlineSymbols.otf t
-echo -e "${YEL}Setting up git params ${NC}"                                                     │o gitignore"
-git config --global user.email "kanishkegb@gmail.com"                                           │[detached HEAD 0d9307d] added PowerlineSymbols.otf to gitignore
-git config --global push.default matching
+                                                                                                
 
 # update git submodules
 git submodule update --init
@@ -132,10 +128,10 @@ sudo apt-get -y install ibus-m17n
 # copying dotfiles
 echo ""
 echo -e "${YEL}Copying dotfiles ${NC}"
-echo "cp .bashrc ~/"
-echo "cp .zshrc ~/"
-echo "cp .tmux.conf ~/"
-echo "cp .powerline-shell.json ~/"
+cp bashrc ~/.bashrc
+cp zshrc ~/.zshrc
+cp tmux.conf ~/.tmux.conf
+cp powerline-shell.json ~/.powerline-shell.json
 
 echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
 
@@ -143,6 +139,17 @@ echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
 # sudo add-apt-repository ppa:noobslab/icons2
 # sudo apt-get update
 # sudo apt-get install uniform-icons
+
+echo ""
+echo -e "${YEL}Setting up git params ${NC}"
+read -p "git user.name? " name
+git config --global user.email "kanishkegb@gwu.edu"
+git config --global user.name "$name"
+git config --global push.default matching
+git config --global core.editor vim
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub
 
 # other apps to be installed manually
 echo ""
