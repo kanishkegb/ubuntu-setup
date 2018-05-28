@@ -33,11 +33,6 @@ echo -e "${YEL}Starting to install apps ${NC}"
 #sudo apt -y update
 #sudo apt -y install git
 
-echo ""
-echo -e "${YEL}Setting up git params ${NC}"
-git config --global user.email "kanishkegb@gmail.com"
-git config --global push.default matching
-
 
 # update git submodules
 git submodule update --init
@@ -110,6 +105,22 @@ cp tmux.conf ~/.tmux.conf
 cp powerline-shell.json ~/.powerline-shell.json
 
 echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
+
+
+echo ""
+echo -e "${YEL}Setting up git params ${NC}"
+read -p "git user.name? " name
+git config --global user.email "kanishkegb@gwu.edu"
+git config --global user.name "$name"
+git config --global push.default matching
+git config --global core.editor vim
+
+ssh-keygen -t rsa -b 4096 -C "kanishkegb@gwu.edu"
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub
+
+
 
 # uniform-icons theme
 # sudo add-apt-repository ppa:noobslab/icons2

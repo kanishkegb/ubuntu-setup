@@ -147,6 +147,8 @@ git config --global user.email "kanishkegb@gwu.edu"
 git config --global user.name "$name"
 git config --global push.default matching
 git config --global core.editor vim
+
+ssh-keygen -t rsa -b 4096 -C "kanishkegb@gwu.edu"
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub
