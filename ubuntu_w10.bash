@@ -38,6 +38,7 @@ echo -e "${YEL}Setting up git params ${NC}"
 git config --global user.email "kanishkegb@gmail.com"
 git config --global push.default matching
 
+
 # update git submodules
 git submodule update --init
 
@@ -103,10 +104,10 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # copying dotfiles
 echo ""
 echo -e "${YEL}Copying dotfiles ${NC}"
-cp .bashrc ~/
-cp .zshrc ~/
-cp .tmux.conf ~/
-cp .powerline-shell.json ~/
+cp bashrc ~/.bashrc
+cp zshrc_w10 ~/.zshrc
+cp tmux.conf ~/.tmux.conf
+cp powerline-shell.json ~/.powerline-shell.json
 
 echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
 
