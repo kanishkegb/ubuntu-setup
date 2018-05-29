@@ -27,21 +27,23 @@ user = g.get_user().login
 repos = g.get_user().get_repos()
 
 path = parse_path(path)
-# pdb.set_trace()
-
 
 def clone_or_update(repo, path):
-    print(os.system('pwd'))
+    os.system('pwd')
     os.chdir(path)
     repo_path = os.path.join(path, repo.name)
 
     if os.path.isdir(repo_path):
         os.chdir(repo_path)
         os.system('git pull')
+        if os.path.exists(os.path.join(repo_path, '.gitmodules')):
+            os.system('git submodule update')
     else:
         os.system('git clone {}'.format(repo.ssh_url))
         os.chdir(repo_path)
         os.system('git pull')
+        if os.path.exists(os.path.join(repo_path, '.gitmodules')):
+            os.system('git submodule update --init')
 
     os.chdir(path)
 
@@ -74,26 +76,24 @@ for repo in repos:
     owner = repo.owner.login
     os.chdir(path)
     if owner == user:
-        print('Owned repo: {}'.format(repo.name))
+        print('\nOwned repo: {}'.format(repo.name))
         sub_dir = get_sub_dir(path, 'personal')
         num_personal_repos += 1
-        # clone_or_update(repo, sub_dir)
+        clone_or_update(repo, sub_dir)
 
     else:
         for mem in repo.get_contributors():
             if mem.login == user:
-                # pdb.set_trace()
-
                 if owner in orgs_list:
-                    print('{} repo: {}'.format(owner, repo.name))
+                    print('\n{} repo: {}'.format(owner, repo.name))
                     sub_dir = get_sub_dir(path, owner)
                     orgs['num_{}_repos'.format(owner)] += 1
-                    # clone_or_update(repo, sub_dir)
+                    clone_or_update(repo, sub_dir)
                 else:
-                    print('Contributed repo: {}'.format(repo.name))
+                    print('\nContributed repo: {}'.format(repo.name))
                     sub_dir = get_sub_dir(path, 'contributed')
                     num_contributed_repos += 1
-                    # clone_or_update(repo, sub_dir)
+                    clone_or_update(repo, sub_dir)
 
 print('\nFinished GitHub backup!\n')
 print('\n\n======================================\n')
