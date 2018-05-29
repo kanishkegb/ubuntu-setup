@@ -1,10 +1,8 @@
 from github import Github
 
+import argparse
 import os
 import pdb
-
-
-path = '/mnt/d/Sync/GitHub'
 
 
 def parse_path(path):
@@ -159,44 +157,61 @@ def print_sammary(num_personal_repos, num_contributed_repos, orgs):
 
     return
 
+def main(path):
 
-# !!! DO NOT EVER USE HARD-CODED VALUES HERE !!!
-# Instead, set and test environment variables, see README for info
-GH_ACCSS_TKN = os.environ['GH_ACCSS_TKN']
-g = Github(GH_ACCSS_TKN)
+    # !!! DO NOT EVER USE HARD-CODED VALUES HERE !!!
+    # Instead, set and test environment variables, see README for info
+    GH_ACCSS_TKN = os.environ['GH_ACCSS_TKN']
+    g = Github(GH_ACCSS_TKN)
 
-user = g.get_user().login
-repos = g.get_user().get_repos()
+    user = g.get_user().login
+    repos = g.get_user().get_repos()
 
-path = parse_path(path)
+    path = parse_path(path)
 
-os.chdir(path)
-orgs = get_orgs(g)
-orgs_list = orgs['org_list']
-
-num_personal_repos = 0
-num_contributed_repos = 0
-for repo in repos:
-    owner = repo.owner.login
     os.chdir(path)
-    if owner == user:
-        print('\nOwned repo: {}'.format(repo.name))
-        sub_dir = get_sub_dir(path, 'personal')
-        num_personal_repos += 1
-        clone_or_update(repo, sub_dir)
+    orgs = get_orgs(g)
+    orgs_list = orgs['org_list']
 
-    else:
-        for mem in repo.get_contributors():
-            if mem.login == user:
-                if owner in orgs_list:
-                    print('\n{} repo: {}'.format(owner, repo.name))
-                    sub_dir = get_sub_dir(path, owner)
-                    orgs['num_{}_repos'.format(owner)] += 1
-                    clone_or_update(repo, sub_dir)
-                else:
-                    print('\nContributed repo: {}'.format(repo.name))
-                    sub_dir = get_sub_dir(path, 'contributed')
-                    num_contributed_repos += 1
-                    clone_or_update(repo, sub_dir)
+    num_personal_repos = 0
+    num_contributed_repos = 0
+    for repo in repos:
+        owner = repo.owner.login
+        os.chdir(path)
+        if owner == user:
+            print('\nOwned repo: {}'.format(repo.name))
+            sub_dir = get_sub_dir(path, 'personal')
+            num_personal_repos += 1
+            clone_or_update(repo, sub_dir)
 
-print_sammary(num_personal_repos, num_contributed_repos, orgs)
+        else:
+            for mem in repo.get_contributors():
+                if mem.login == user:
+                    if owner in orgs_list:
+                        print('\n{} repo: {}'.format(owner, repo.name))
+                        sub_dir = get_sub_dir(path, owner)
+                        orgs['num_{}_repos'.format(owner)] += 1
+                        clone_or_update(repo, sub_dir)
+                    else:
+                        print('\nContributed repo: {}'.format(repo.name))
+                        sub_dir = get_sub_dir(path, 'contributed')
+                        num_contributed_repos += 1
+                        clone_or_update(repo, sub_dir)
+
+    print_sammary(num_personal_repos, num_contributed_repos, orgs)
+
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(
+        description=(
+            'Backsup all the repositories in GitHub to a local directory'))
+    parser.add_argument(
+        '-p', '--path',
+        default=['/mnt/d/Sync/GitHub'],
+        nargs=1,
+        help='specify the path for the backup')
+    args = parser.parse_args()
+
+    path = args.path[0]
+    main(path)

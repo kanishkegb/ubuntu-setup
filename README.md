@@ -21,7 +21,7 @@ Clone ubuntu_setup on Windows. Do followings in PowerShell.
   powershell -ExecutionPolicy ByPass -File .\install.ps1
   ```
 
-## Vim 
+## Vim
 * First install Vim
   ```
   sudo apt-get install vim
@@ -34,11 +34,11 @@ Clone ubuntu_setup on Windows. Do followings in PowerShell.
 * Install plugins
   ```
   vim
-  :source ~/.vimrc 
-  :PlugInstall 
+  :source ~/.vimrc
+  :PlugInstall
   ```
   It might be required to press `q` at the end of the installation process.
-  
+
 
 ## Virtual Machine
 ### Setup Shared Folder - [link](https://help.ubuntu.com/community/VirtualBox/SharedFolders)
@@ -50,3 +50,22 @@ Clone ubuntu_setup on Windows. Do followings in PowerShell.
 
 ## Drivers
 * NVIDIA drivers: http://www.linuxandubuntu.com/home/how-to-install-latest-nvidia-drivers-in-linux
+
+
+## Backuing-Up
+* GitHub
+  1. Install dependencies
+    ```
+    pip install pygithub
+    ```
+  2. Create a [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) for GitHub. Copy the token and do the following in the terminal before running the code.
+  ```
+  export GH_ACCSS_TKN=personal_access_token_generated_in_GitHub
+  ```
+  You have to do this every time you run the code. You can skip this if you add the above line to `~/.bashrc` or `~/.zshrc`.
+  3. make sure that you are connected to GitHub with an [ssh key](https://help.github.com/articles/connecting-to-github-with-ssh/).
+  4. Run the code
+    ```
+    cd backing-up
+    python backup_github_repos.py
+    ```
