@@ -29,9 +29,10 @@ repos = g.get_user().get_repos()
 path = parse_path(path)
 
 def clone_or_update(repo, path):
-    os.system('pwd')
+
     os.chdir(path)
     repo_path = os.path.join(path, repo.name)
+    print('cloning at {}'.format(repo_path))
 
     if os.path.isdir(repo_path):
         os.chdir(repo_path)
