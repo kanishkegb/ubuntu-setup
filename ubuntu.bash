@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 reset
 echo -e "${YEL}Starting to change settings ${NC}"
 echo "change enabled=0"
-sudo gedit /etc/default/apport
+vi gedit /etc/default/apport
 
 
 ## system update
@@ -41,15 +41,14 @@ sudo apt-get -y install jabref
 # sudo apt-get -y install texstudio
 
 # git
-echo ""
-echo -e "${YEL}Installing git ${NC}"
-sudo apt-get -y purge runit
-sudo apt-get -y purge git-all
-sudo apt-get -y purge git
-sudo apt-get -y autoremove
-sudo apt -y update
-sudo apt -y install git
-                                                                                                
+#echo ""
+#echo -e "${YEL}Installing git ${NC}"
+#sudo apt-get -y purge runit
+#sudo apt-get -y purge git-all
+#sudo apt-get -y purge git
+#sudo apt-get -y autoremove
+#sudo apt -y update
+#sudo apt -y install git
 
 # update git submodules
 git submodule update --init
@@ -58,14 +57,13 @@ git submodule update --init
 echo ""
 echo -e "${YEL}Installing tmux ${NC}"
 sudo apt-get -y install tmux
-cp .tmux.conf ~/
 
 # weather widget
-echo ""
-echo -e "${YEL}Installing Weather Widget ${NC}"
-sudo add-apt-repository ppa:atareao/atareao
-sudo apt-get update
-sudo apt-get -y install my-weather-indicator
+# echo ""
+# echo -e "${YEL}Installing Weather Widget ${NC}"
+# sudo add-apt-repository ppa:atareao/atareao
+# sudo apt-get update
+# sudo apt-get -y install my-weather-indicator
 
 # red-shift
 sudo apt-get -y install redshift-gtk
@@ -84,6 +82,7 @@ sudo apt-get -y install gparted
 echo ""
 echo -e "${YEL}Installing pip ${NC}"
 sudo apt-get -y install python-pip python3-pip
+pip install --upgrade pip
 
 # powerline
 echo ""
@@ -98,10 +97,11 @@ echo -e "${YEL}Installing powrline fonts ${NC}"
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
 
+mkdir -p ~/.local/share/fonts/
 mv PowerlineSymbols.otf ~/.local/share/fonts/
 fc-cache -vf ~/.local/share/fonts/
 mkdir -p ~/.config/fontconfig/conf.d/
-mv -powerline-symbols.conf ~/.config/fontconfig/conf.d/
+mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 cd ..
 
 # install curl
@@ -152,6 +152,10 @@ ssh-keygen -t rsa -b 4096 -C "kanishkegb@gwu.edu"
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub
+
+echo ""
+echo -e "${YEL}Installing vim${NC}"
+sudo apt-get -y install vim-gnome
 
 # other apps to be installed manually
 echo ""
