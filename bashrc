@@ -117,6 +117,6 @@ if ! shopt -oq posix; then
 fi
 
 # Launch Zsh
-if [ -t 1 ]; then
- exec zsh
-fi
+#if [ -t 1 ]; then
+# exec zsh
+#fi

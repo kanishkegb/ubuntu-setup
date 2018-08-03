@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/Kanishke/.oh-my-zsh
+export ZSH=/home/kanishke/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -92,7 +92,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias wd="cd ~/../../mnt/c/Users/Kanishke/Documents/"
+alias wd="cd ~/Documents/"
+alias fd="cd ~/Documents/fdcl-uav/build"
+alias mr="make rover -j4"
+alias mb="make base -j4"
+alias rr="./rover"
+alias rb="./base"
 
 function powerline_precmd() {
     PS1="$(powerline-shell --shell zsh $?)"
@@ -110,3 +115,9 @@ function install_powerline_precmd() {
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
+
+DEFAULT_USER = kanishke prompt_context(){}
+
+#export PATH="/home/kanishke/anaconda3/bin:$PATH"  
+export GH_ACCSS_TKN=
+
