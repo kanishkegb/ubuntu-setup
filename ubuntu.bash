@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 reset
 echo -e "${YEL}Starting to change settings ${NC}"
 echo "change enabled=0"
-vi gedit /etc/default/apport
+vi /etc/default/apport
 
 
 ## system update
