@@ -17,6 +17,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-surround'
 Plug 'altercation/vim-colors-solarized'
+Plug 'ctrlpvim/ctrlp.vim'
 
 autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -40,7 +41,7 @@ set shiftwidth=4
 set expandtab
 
 
-" NERDTree shirtcut
+" NERDTree shortcut
 map <C-n> :NERDTreeToggle<CR>
 
 " Add spaces after comment delimiters by default
@@ -84,6 +85,10 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
+" Fuzzy-finder
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 
 " Switching panes
 map <C-j> <C-W>j
