@@ -50,3 +50,15 @@ Clone ubuntu_setup on Windows. Do followings in PowerShell.
 
 ## Drivers
 * NVIDIA drivers: http://www.linuxandubuntu.com/home/how-to-install-latest-nvidia-drivers-in-linux
+
+## Common Aliases
+```
+alias ga='git add'
+alias gst='git status'
+alias gd='git diff'
+alias gco='git checkout'
+alias gb='git branch'
+alias gl='git pull'
+alias gp='git push'
+alias gcam='git commit -am'
+```
