@@ -9,7 +9,8 @@ NC='\033[0m' # No Color
 reset
 echo -e "${YEL}Starting to change settings ${NC}"
 echo "change enabled=0"
-vi /etc/default/apport
+read -p "press enter to continue"
+sudo vi /etc/default/apport
 
 
 ## system update
@@ -131,6 +132,7 @@ echo -e "${YEL}Copying dotfiles ${NC}"
 cp bashrc ~/.bashrc
 cp zshrc ~/.zshrc
 cp tmux.conf ~/.tmux.conf
+cp vimrc ~/.vimrc
 cp powerline-shell.json ~/.powerline-shell.json
 
 echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
@@ -169,7 +171,6 @@ echo "anaconda: https://www.continuum.io/downloads"
 echo ""
 echo ""
 echo -e "${YEL}Change these settings manually${NC}"
-echo "Add shortcut Super+Ctrl+C for xcalib -invert -alter"
 echo "Add solarized_light to ~/.config/texstudio/texstudio.ini"
 echo "Add the Sinhala keyboard in Language Settings"
 echo "Install tmux plugins by pressing 'prefix+I'"
