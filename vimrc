@@ -6,8 +6,8 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 Plug 'junegunn/vim-easy-align'
-Plug 'lervag/vimtex'
-Plug 'valloric/youcompleteme'
+" Plug 'lervag/vimtex'
+" Plug 'valloric/youcompleteme'
 Plug 'scrooloose/nerdcommenter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdtree'
@@ -72,7 +72,7 @@ let g:NERDToggleCheckAllLines = 1
 
 
 " NERDTree git plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom= {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -107,4 +107,4 @@ set mouse=a
 
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme desert
