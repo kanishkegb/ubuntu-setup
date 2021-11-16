@@ -18,6 +18,11 @@ echo -e "${YEL}Starting to update the system ${NC}"
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
+# update git submodules
+echo ""
+echo ""
+echo -e "${YEL}Updating supmodules ${NC}"
+git submodule update --init
 
 ## apps
 echo ""
@@ -30,29 +35,10 @@ echo -e "${YEL}Installing VLC ${NC}"
 sudo apt-get -y install vlc
 
 # jabref
-echo ""
-echo -e "${YEL}Installing JabRef ${NC}"
-sudo apt-get -y install jabref
-
-# texstudio
 # echo ""
-# echo -e "${YEL}Installing TexStudio ${NC}"
-# sudo apt-add-repository ppa:blahota/texstudio
-# sudo apt-get -y update
-# sudo apt-get -y install texstudio
+# echo -e "${YEL}Installing JabRef ${NC}"
+# sudo apt-get -y install jabref
 
-# git
-#echo ""
-#echo -e "${YEL}Installing git ${NC}"
-#sudo apt-get -y purge runit
-#sudo apt-get -y purge git-all
-#sudo apt-get -y purge git
-#sudo apt-get -y autoremove
-#sudo apt -y update
-#sudo apt -y install git
-
-# update git submodules
-git submodule update --init
 
 # tmux
 echo ""
@@ -70,9 +56,9 @@ sudo apt-get -y install tmux
 sudo apt-get -y install redshift-gtk
 
 # invert color space
-echo ""
-echo -e "${YEL}Installing xcalib ${NC}"
-sudo apt-get -y install xcalib
+# echo ""
+# echo -e "${YEL}Installing xcalib ${NC}"
+# sudo apt-get -y install xcalib
 
 # g-parted
 echo ""
@@ -86,23 +72,23 @@ sudo apt-get -y install python-pip python3-pip
 pip install --upgrade pip
 
 # powerline
-echo ""
-echo -e "${YEL}Installing powerline ${NC}"
-pip install --user powerline-status
-cd powerline-shell
-sudo python setup.py install
+# echo ""
+# echo -e "${YEL}Installing powerline ${NC}"
+# pip install --user powerline-status
+# cd powerline-shell
+# sudo python setup.py install
 
 # powerline fonts
 echo ""
 echo -e "${YEL}Installing powrline fonts ${NC}"
-wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+cd fonts
+./install.sh
 
 mkdir -p ~/.local/share/fonts/
 mv PowerlineSymbols.otf ~/.local/share/fonts/
 fc-cache -vf ~/.local/share/fonts/
-mkdir -p ~/.config/fontconfig/conf.d/
-mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+# mkdir -p ~/.config/fontconfig/conf.d/
+# mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 cd ..
 
 # install curl
@@ -115,6 +101,12 @@ echo ""
 echo -e "${YEL}Installing zsh ${NC}"
 sudo apt-get -y install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# install powerlevel10k
+echo ""
+echo -e "${YEL}Installing powerlevel10k ${NC}"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
 
 # install tmux addons
 echo ""
@@ -133,7 +125,11 @@ cp bashrc ~/.bashrc
 cp zshrc ~/.zshrc
 cp tmux.conf ~/.tmux.conf
 cp vimrc ~/.vimrc
-cp powerline-shell.json ~/.powerline-shell.json
+# cp powerline-shell.json ~/.powerline-shell.json
+
+# Vim Plugins
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "DEFAULT_USER = $USER prompt_context(){}" >> ~/.zshrc
 
@@ -150,22 +146,20 @@ git config --global user.name "$name"
 git config --global push.default matching
 git config --global core.editor vim
 
-ssh-keygen -t rsa -b 4096 -C "kanishkegb@gwu.edu"
+ssh-keygen -t ed25519 -C "kanishkegb@gwu.edu"
 eval $(ssh-agent -s)
-ssh-add ~/.ssh/id_rsa
-cat ~/.ssh/id_rsa.pub
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
 
 echo ""
 echo -e "${YEL}Installing vim${NC}"
 sudo apt-get -y install vim-gnome
 
 # other apps to be installed manually
-echo ""
-echo ""
-echo -e "${YEL}Install these apps manually ${NC}"
-echo "atom: https://atom.io/download/deb"
-echo "gitkraken: https://www.gitkraken.com/download"
-echo "anaconda: https://www.continuum.io/downloads"
+# echo ""
+# echo ""
+# echo -e "${YEL}Install these apps manually ${NC}"
+# echo "anaconda: https://www.continuum.io/downloads"
 
 # manual settings
 echo ""
@@ -174,3 +168,4 @@ echo -e "${YEL}Change these settings manually${NC}"
 echo "Add solarized_light to ~/.config/texstudio/texstudio.ini"
 echo "Add the Sinhala keyboard in Language Settings"
 echo "Install tmux plugins by pressing 'prefix+I'"
+echo "Open vim and run PlugInstall"

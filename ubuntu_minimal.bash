@@ -8,7 +8,7 @@ NC='\033[0m' # No Color
 ## settings
 reset
 echo -e "${YEL}Starting to change settings ${NC}"
-echo "change enabled=0"
+echo "change to enabled=0"
 read -p "press enter to continue"
 sudo vi /etc/default/apport
 
@@ -19,31 +19,22 @@ sudo apt-get -y update
 sudo apt-get -y upgrade
 
 
+# update git submodules
+echo ""
+echo ""
+echo -e "${YEL}Updating supmodules ${NC}"
+git submodule update --init
+
+
 ## apps
 echo ""
 echo ""
 echo -e "${YEL}Starting to install apps ${NC}"
 
-# vlc
-echo ""
-echo -e "${YEL}Installing VLC ${NC}"
-sudo apt-get -y install vlc
-
-# update git submodules
-git submodule update --init
-
 # tmux
 echo ""
 echo -e "${YEL}Installing tmux ${NC}"
 sudo apt-get -y install tmux
-
-# red-shift
-sudo apt-get -y install redshift-gtk
-
-# invert color space
-echo ""
-echo -e "${YEL}Installing xcalib ${NC}"
-sudo apt-get -y install xcalib
 
 # pip
 echo ""
@@ -60,7 +51,7 @@ cd fonts
 mkdir -p ~/.local/share/fonts/
 mv PowerlineSymbols.otf ~/.local/share/fonts/
 fc-cache -vf ~/.local/share/fonts/
-mkdir -p ~/.config/fontconfig/conf.d/
+# mkdir -p ~/.config/fontconfig/conf.d/
 # mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 cd ..
 
@@ -92,7 +83,7 @@ cp bashrc ~/.bashrc
 cp zshrc ~/.zshrc
 cp tmux.conf ~/.tmux.conf
 cp vimrc ~/.vimrc
-cp powerline-shell.json ~/.powerline-shell.json
+# cp powerline-shell.json ~/.powerline-shell.json
 
 # Vim Plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -108,10 +99,10 @@ git config --global user.name "$name"
 git config --global push.default matching
 git config --global core.editor vim
 
-ssh-keygen -t rsa -b 4096 -C "kanishkegb@gwu.edu"
+ssh-keygen -t ed25519 -C "kanishkegb@gwu.edu"
 eval $(ssh-agent -s)
-ssh-add ~/.ssh/id_rsa
-cat ~/.ssh/id_rsa.pub
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
 
 # manual settings
 echo ""
